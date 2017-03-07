@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Setup your scenes and adjust the scenes below
-SCENES="On|Off|Sunrise|Sunset|Sleep|Rainbow|On2700|On4300|On6500|Off1Min|Stop"
+SCENES="On|Off|Sunrise|Sunset|Sleep|Rainbow|2700|4300|6500|Off1Min|Stop"
 
 set -E
 trap '[ "$?" -ne 99 ] || exit 99' ERR
@@ -47,9 +47,9 @@ rainbow() {
 [[ "$2" = "Sunset" ]] && SC='"method":"set_scene", "params":["cf",2,2,"50,2,4000,100,900000,2,4000,1"]'
 [[ "$2" = "Sleep" ]] && SC='"method":"set_scene", "params":["cf_",24,2,"4000,2,4000,30,7000,2,4000,10,8000,2,4000,1"]'
 [[ "$2" = "Rainbow" ]] && SC='"method":"set_scene","params":["cf",0,0,"'$(rainbow)'"]'
-[[ "$2" = "On2700" ]] && SC='"method":"set_ct_abx","params":[2700,"smooth",200]'
-[[ "$2" = "On4300" ]] && SC='"method":"set_ct_abx","params":[4300,"smooth",200]'
-[[ "$2" = "On6500" ]] && SC='"method":"set_ct_abx","params":[6500,"smooth",200]'
+[[ "$2" = "2700" ]] && SC='"method":"set_scene","params":["ct",2700,100]'
+[[ "$2" = "4300" ]] && SC='"method":"set_scene","params":["ct",4300,100]'
+[[ "$2" = "6500" ]] && SC='"method":"set_scene","params":["ct",6500,100]'
 [[ "$2" = "Off1Min" ]] && SC='"method":"set_scene","params":["cf",2,2,"50,1,16777215,100,36000,1,16777215,1"]'
 [[ "$2" = "Stop" ]] && SC='"method":"stop_cf","params":[]' 
 
