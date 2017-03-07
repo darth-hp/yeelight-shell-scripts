@@ -11,25 +11,38 @@ Each of the `yeelight-*.sh` scripts has a specific function that is hopefully qu
 
 ## Examples
 Switch on (to last used values)
-`./yeelight-scene.sh 0 On`
+```ShellSession
+./yeelight-scene.sh 0 On
+```
 
 Switch on using 4300 Kelvin
-`./yeelight-scene.sh 0 4300`
+```ShellSession
+./yeelight-scene.sh 0 4300
+```
 
 Switch on Rainbow
-`./yeelight-scene.sh 0 Rainbow`
+```ShellSession
+./yeelight-scene.sh 0 Rainbow
+```
 
 Set brightness to 50%
-`./yeelight-brightness.sh 0 50`
+```ShellSession
+./yeelight-brightness.sh 0 50
+```
 
 Set RGB color to BLUE (using absolut number, decimal and hex triples)
-`yeelight-rgb.sh 0 255`
-`yeelight-rgb.sh 0 0,0,255`
-`yeelight-rgb.sh 0 x0,0,ff`
+```ShellSession
+./yeelight-rgb.sh 0 255
+./yeelight-rgb.sh 0 0,0,255
+./yeelight-rgb.sh 0 x0,0,ff
+```
 
 Set hue (hsv) to 32 (yellow) with 80% brightness (of that color - 0 means full white)
-`./yeelight-hue.sh 0 32 80`
+```ShellSession
+./yeelight-hue.sh 0 32 80
+```
 
 Set color temperature to 6500 Kelvin
-`./yeelight-colortemp.sh 0 6500`
-
+```ShellSession
+./yeelight-colortemp.sh 0 6500
+```
