@@ -25,6 +25,16 @@ Switch on Rainbow
 ./yeelight-scene.sh 0 Rainbow
 ```
 
+Switch on Disco
+```ShellSession
+./yeelight-scene.sh 0 Disco
+```
+
+Switch on Disco with 120ms
+```ShellSession
+DISCOSPEED=120 ./yeelight-scene.sh 0 Disco
+```
+
 Set brightness to 50%
 ```ShellSession
 ./yeelight-brightness.sh 0 50
