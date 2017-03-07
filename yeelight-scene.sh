@@ -1,10 +1,12 @@
 #!/bin/bash
 
 # Setup your scenes and adjust the scenes below
-SCENES="On|Off|Sunrise|Sunset|Sleep|Rainbow|2700|4300|6500|Off1Min|Stop"
+SCENES="On|Off|Sunrise|Sunset|Sleep|Rainbow|Disco|2700|4300|6500|Off1Min|Stop"
 
 set -E
 trap '[ "$?" -ne 99 ] || exit 99' ERR
+
+DISCOSPEED=${DISCOSPEED:-600}
 
 IDMSG="ID must be a number"
 SCENEMSG="SCENE value must be one of '$SCENES'"
@@ -13,15 +15,17 @@ usage(){
 	echo "Usage: $( basename $0 ) <ID> <SCENE>"
 	echo "  $IDMSG"
 	echo "  $SCENEMSG"
+	echo "    Disco accepts a duration (default 600) in milli seconds between 50 and 99999"
+	echo "    Example: 'DISCOSPEED=120 $0 <ID> Disco'"
 }
 
 # Calculate rainbow
 rainbow() {
 	# Color cycle - 10 is maximum, so 8000FF is left out
 	declare -a RB=(0000FF 0080FF 00FF80 00FF00 80FF00 FFFF00 FF8000 FF0000 FF0080 FF00FF)
-	[[ ${#RB[*]} -gt 10 ]] && echo "Maximum number of color-flows is 10 - here ${#RB[*]}" >&2 && exit 99
-	# 3 seconds
-	duration=3000
+	[[ ${#RB[*]} -gt 10 ]] && echo "ERROR: Maximum number of color-flows is 10 - here ${#RB[*]}" >&2 && exit 99
+	[[ ! "$1" =~ ^[0-9]+$ || "$1" -lt 50 || "$1" -gt 99999 ]] && echo "ERROR: Duration must be between 50 and 99999 - is $1" >&2 && exit 99
+	duration=$1
 	# color mode
 	mode=1
 	# light intensity in %
@@ -46,7 +50,8 @@ rainbow() {
 [[ "$2" = "Sunrise" ]] && SC='"method":"set_scene", "params":["cf",2,1,"50,2,4000,1,900000,2,4000,100"]'
 [[ "$2" = "Sunset" ]] && SC='"method":"set_scene", "params":["cf",2,2,"50,2,4000,100,900000,2,4000,1"]'
 [[ "$2" = "Sleep" ]] && SC='"method":"set_scene", "params":["cf_",24,2,"4000,2,4000,30,7000,2,4000,10,8000,2,4000,1"]'
-[[ "$2" = "Rainbow" ]] && SC='"method":"set_scene","params":["cf",0,0,"'$(rainbow)'"]'
+[[ "$2" = "Rainbow" ]] && SC='"method":"set_scene","params":["cf",0,0,"'$(rainbow 3000)'"]'
+[[ "$2" = "Disco" ]] && SC='"method":"set_scene","params":["cf",0,0,"'$(rainbow $DISCOSPEED)'"]'
 [[ "$2" = "2700" ]] && SC='"method":"set_scene","params":["ct",2700,100]'
 [[ "$2" = "4300" ]] && SC='"method":"set_scene","params":["ct",4300,100]'
 [[ "$2" = "6500" ]] && SC='"method":"set_scene","params":["ct",6500,100]'
