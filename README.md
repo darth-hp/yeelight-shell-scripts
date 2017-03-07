@@ -63,3 +63,5 @@ Since the scripts don't require any additional tool or access rights you can jus
 Make sure the scripts are executable (`chmod +x *.sh`) and either you are using the full path or put them somewhere inside $PATH, for example `/usr/local/bin/`.
 
 I have setup different scenes as devices for the same light. There is a `bedroom` device which can be switched on/off and use the dim feature - this is just a normal setup. And there is also a `sleep` and a `rainbow` device that addresses the same light to apply this scenes.
+
+`yeelight-disco.sh` is a wrapper that only accepts one value - I use `${intensity.percent}` from HA-Bridge. There is some math done with that value to fit into the 2-99% range (Strange: I can't tell Alexa to use 1 or 100%) and still have some 'disco-speed'. Adjust to your needs.
