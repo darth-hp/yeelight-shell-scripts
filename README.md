@@ -56,3 +56,10 @@ Set color temperature to 6500 Kelvin
 ```ShellSession
 ./yeelight-colortemp.sh 0 6500
 ```
+
+## HA-Bridge and Amazon Alexa
+I am personally using this scripts on a Synology NAS with a running [HA-Bridge](https://github.com/bwssytems/ha-bridge/).
+Since the scripts don't require any additional tool or access rights you can just execute them directly from the HA-Bridge.
+Make sure the scripts are executable (`chmod +x *.sh`) and either you are using the full path or put them somewhere inside $PATH, for example `/usr/local/bin/`.
+
+I have setup different scenes as devices for the same light. There is a `bedroom` device which can be switched on/off and use the dim feature - this is just a normal setup. And there is also a `sleep` and a `rainbow` device that addresses the same light to apply this scenes.
