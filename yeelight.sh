@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 # Put all your Yeelights separated with spaces here
 declare -a ID=(192.168.112.110)
 
