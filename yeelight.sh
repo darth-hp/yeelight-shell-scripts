@@ -1,6 +1,6 @@
 #!/bin/bash
 # Put all your Yeelights separated by spaces here
-declare -a ID=(192.168.112.178 192.168.112.179)
+declare -a ID=($(cat ./ips))
 
 if [[ "$#" -ne 2 ]]; then
   echo "Usage: $( basename $0 ) <ID> <JSON>"
