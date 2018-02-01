@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Setup your scenes and adjust the scenes below
-SCENES="On|Off|Sunrise|Sunset|Sleep|Rainbow|Disco|2700|4300|6500|Off1Min|Stop"
+SCENES="On|Off|Sunrise|Sunset|Sleep|Nightlight|Rainbow|Disco|2700|4300|6500|Off1Min|Stop"
 
 set -E
 trap '[ "$?" -ne 99 ] || exit 99' ERR
@@ -35,7 +35,7 @@ rainbow() {
 	done
 }
 
-[[ "$#" -ne 2 ]] && usage && exit 1
+#[[ "$#" -ne 2 ]] && usage && exit 1
 [[ ! "$1" =~ ^[0-9]+$ ]] && echo "ERROR: $IDMSG" && exit 1
 [[ ! "$2" =~ ^($SCENES)$ ]] && echo "ERROR: $SCENEMSG" && exit 1
 
@@ -50,6 +50,7 @@ rainbow() {
 [[ "$2" = "Sunrise" ]] && SC='"method":"set_scene", "params":["cf",2,1,"50,2,4000,1,900000,2,4000,100"]'
 [[ "$2" = "Sunset" ]] && SC='"method":"set_scene", "params":["cf",2,2,"50,2,4000,100,900000,2,4000,1"]'
 [[ "$2" = "Sleep" ]] && SC='"method":"set_scene", "params":["cf_",24,2,"4000,2,4000,30,7000,2,4000,10,8000,2,4000,1"]'
+[[ "$2" = "Nightlight" ]] && SC='"method":"set_scene","params":["nightlight",'"${3:=10}"']' 
 [[ "$2" = "Rainbow" ]] && SC='"method":"set_scene","params":["cf",0,1,"'$(rainbow 3000)'"]'
 [[ "$2" = "Disco" ]] && SC='"method":"set_scene","params":["cf",0,1,"'$(rainbow $DISCOSPEED)'"]'
 [[ "$2" = "2700" ]] && SC='"method":"set_scene","params":["ct",2700,100]'

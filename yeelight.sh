@@ -2,6 +2,8 @@
 # Put all your Yeelights separated by spaces here
 declare -a ID=($(cat ./ips))
 
+echo $@
+
 if [[ "$#" -ne 2 ]]; then
   echo "Usage: $( basename $0 ) <ID> <JSON>"
   echo "    With ID set to 0, it will iterate over all IDs"
