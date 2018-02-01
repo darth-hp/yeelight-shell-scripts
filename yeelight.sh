@@ -18,7 +18,8 @@ fn_send() {
 }
 
 # Not 0? Then just use this and end
-[[ $1 -gt 0 ]] && fn_send $1 $2 && exit
+[[ $1 -gt 0 ]] && fn_send $1 $2 
+[[ $1 -gt 0 ]] && exit
 
 # Iterate over all
 for ((i=1; i<=${#ID[@]}; i++)); do
