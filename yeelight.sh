@@ -1,6 +1,6 @@
 #!/bin/bash
-# Put all your Yeelights separated by spaces here
-declare -a ID=(192.168.112.178 192.168.112.179)
+# Put all your Yeelights separated by spaces in yeelight-ips
+declare -a ID=($(cat ./yeelight-ips))
 
 if [[ "$#" -ne 2 ]]; then
   echo "Usage: $( basename $0 ) <ID> <JSON>"
@@ -11,8 +11,14 @@ fi
 [[ $1 -gt ${#ID[@]} ]] && echo "ID value must be between 0 and ${#ID[@]}" && exit 1
 
 fn_send() {
-  echo "Executing on ID $1 [${ID[(($1-1))]}] ..."
-  printf "{\"id\":1,$2}\r\n" >/dev/tcp/${ID[(($1-1))]}/55443
+  ip=${ID[(($1-1))]}
+  echo "Executing on ID $1 [$ip] ...  " $@
+  ping -c1 -W1 $ip > /dev/null
+  if [ $? -eq 0 ]; then 
+    printf "{\"id\":1,$2}\r\n" >/dev/tcp/$ip/55443
+  else
+    echo "$ip not available"
+  fi
 }
 
 # Not 0? Then just use this and end
