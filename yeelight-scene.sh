@@ -48,6 +48,7 @@ rainbow() {
 [[ "$2" = "On" ]] && SC='"method":"set_power","params":["on"]'
 [[ "$2" = "Off" ]] && SC='"method":"set_power","params":["off"]'
 [[ "$2" = "Sunrise" ]] && SC='"method":"set_scene","params":["cf",2,1,"50,2,4000,1,900000,2,4000,100"]'
+[[ "$2" = "Sunrise2" ]] && SC='"method":"set_scene","params":["cf",2,1,"50,1,16731392,1,360000,2,1700,10,540000,2,2700,100"]'
 [[ "$2" = "Sunset" ]] && SC='"method":"set_scene","params":["cf",2,2,"50,2,4000,100,900000,2,4000,1"]'
 [[ "$2" = "Sleep" ]] && SC='"method":"set_scene","params":["cf_",24,2,"4000,2,4000,30,7000,2,4000,10,8000,2,4000,1"]'
 [[ "$2" = "Rainbow" ]] && SC='"method":"set_scene","params":["cf",0,1,"'$(rainbow 3000)'"]'
