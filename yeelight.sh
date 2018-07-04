@@ -1,6 +1,6 @@
 #!/bin/bash
 # Put all your Yeelights separated by spaces in yeelight-ips
-declare -a ID=($(cat ./yeelight-ips))
+declare -a ID=($(cat $(dirname $0)/yeelight-ips))
 
 if [[ "$#" -ne 2 ]]; then
   echo "Usage: $( basename $0 ) <ID> <JSON>"
