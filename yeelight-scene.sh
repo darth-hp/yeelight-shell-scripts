@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Setup your scenes and adjust the scenes below
-SCENES="On|Off|Sunrise|Sunset|Sleep|Rainbow|Disco|2700|4300|6500|Off1Min|Stop"
+SCENES="On|Off|Sunrise|Sunset|Sleep|Rainbow|Disco|2700|4300|6500|Off1Min|Stop|Dim|Warm"
 
 set -E
 trap '[ "$?" -ne 99 ] || exit 99' ERR
@@ -58,5 +58,7 @@ rainbow() {
 [[ "$2" = "6500" ]] && SC='"method":"set_scene","params":["ct",6500,100]'
 [[ "$2" = "Off1Min" ]] && SC='"method":"set_scene","params":["cf",2,2,"50,1,16777215,100,36000,1,16777215,1"]'
 [[ "$2" = "Stop" ]] && SC='"method":"stop_cf","params":[]' 
+[[ "$2" = "Dim" ]] && SC='"method":"set_scene","params":["ct",1000,10]'
+[[ "$2" = "Warm" ]] && SC='"method":"set_scene","params":["ct",3200,100]'
 
 $( dirname $0 )/yeelight.sh "$1" "$SC"
