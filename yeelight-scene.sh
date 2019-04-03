@@ -41,8 +41,8 @@ rainbow() {
 
 # cf - Color Flow: count (0=infinite), action (0=recover,1=stay,2=off), flow_expression
 # A flow expression is a series of tuples - [duration (ms, min 50), mode, value, brightness]
-# For mode: 1=color, 2=color temperature (CT), 7 sleep
-# For value: color or CT depending on mode, ignored with mode 7
+# For mode: 1=color, 2=color temperature (ct), 7 sleep
+# For value: color or ct depending on mode, ignored with mode 7
 # For brightness: 1 - 100, ignored with mode 7
 
 [[ "$2" = "On" ]] && SC='"method":"set_power","params":["on"]'
@@ -50,7 +50,7 @@ rainbow() {
 [[ "$2" = "Sunrise" ]] && SC='"method":"set_scene","params":["cf",2,1,"50,2,4000,1,900000,2,4000,100"]'
 [[ "$2" = "Sunrise2" ]] && SC='"method":"set_scene","params":["cf",2,1,"50,1,16731392,1,360000,2,1700,10,540000,2,2700,100"]'
 [[ "$2" = "Sunset" ]] && SC='"method":"set_scene","params":["cf",2,2,"50,2,4000,100,900000,2,4000,1"]'
-[[ "$2" = "Sleep" ]] && SC='"method":"set_scene","params":["cf_",24,2,"4000,2,4000,30,7000,2,4000,10,8000,2,4000,1"]'
+[[ "$2" = "Sleep" ]] && SC='"method":"set_scene","params":["cf",24,2,"4000,2,4000,30,7000,2,4000,10,8000,2,4000,1"]'
 [[ "$2" = "Rainbow" ]] && SC='"method":"set_scene","params":["cf",0,1,"'$(rainbow 3000)'"]'
 [[ "$2" = "Disco" ]] && SC='"method":"set_scene","params":["cf",0,1,"'$(rainbow $DISCOSPEED)'"]'
 [[ "$2" = "2700" ]] && SC='"method":"set_scene","params":["ct",2700,100]'
