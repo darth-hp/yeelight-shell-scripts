@@ -2,7 +2,7 @@
 Control Xiaomi Mi Yeelight (RGB) with bash scripts. Should work under any recent Linux with a `bash` - sorry, don't know if that works under Windows/CygWin or Macos - you might need to rewrite the last line in the `yeelight.sh` script (e.g. by pipeing the output to `netcat`).
 
 ## Setup
-You need to connect the light using the Yeelight app (or using any other appropriate way) to your network. Then enable `Developer Mode` for the light. You should also make sure that your DHCP server always assigns the same IP address to the light.
+You need to connect the light using the Yeelight app (or using any other appropriate way) to your network. Then enable `Developer Mode` (or `LAN Control Mode` in the current version of the app) for the light. This setting may need to be reset after a firmware update. You should also make sure that your DHCP server always assigns the same IP address to the light.
 
 Now edit the `yeelight-ips` file and enter the IP address of each light you have, separated by a space.
 
