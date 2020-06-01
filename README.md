@@ -57,6 +57,15 @@ Set color temperature to 6500 Kelvin
 ./yeelight-colortemp.sh 0 6500
 ```
 
+
+## Integration with redshift
+`yeelight-redshift.sh` is a script that allows your lamp to change color temperature simultaneously with your monitor if you use redshift. Just like redshift, this script eases strain on your eyes if you use your computer at night. To use this script you need to copy `./samples/yeelight-redshift.timer` and `./samples/yeelight-redshift.service` to `/etc/systemd/system/`, change scrip location in `yeelight-redshift.service`. Then run `sudo systemctl daemon-reload`, `sudo systemctlt enable yeelight-redshift.timer`, `sudo systemctl start yeelight-redshift.timer`.
+
+You can also change some values in `yeelight-redshift.sh` if you need warmer color. 
+
+For the script to work you need to have redshift installed.
+
+
 ## HA-Bridge and Amazon Alexa
 I am personally using this scripts on a Synology NAS with a running [HA-Bridge](https://github.com/bwssytems/ha-bridge/).
 Since the scripts don't require any additional tool or access rights you can just execute them directly from the HA-Bridge.
@@ -65,3 +74,5 @@ Make sure the scripts are executable (`chmod +x *.sh`) and either you are using 
 I have setup different scenes as devices for the same light. There is a `bedroom` device which can be switched on/off and use the dim feature - this is just a normal setup. And there is also a `sleep` and a `rainbow` device that addresses the same light to apply this scenes.
 
 `yeelight-disco.sh` is a wrapper that only accepts one value - I use `${intensity.percent}` from HA-Bridge. There is some math done with that value to fit into the 2-99% range (Strange: I can't tell Alexa to use 1 or 100%) and still have some 'disco-speed'. Adjust to your needs.
+
+
