@@ -1,0 +1,7 @@
+[Unit]
+Description=Yeelight x Redshift collab
+
+[Service]
+Type=oneshot
+ExecStart=/bin/bash $HOME/Downloads/yeelight-shell-scripts/yeelight-redshift.sh
+

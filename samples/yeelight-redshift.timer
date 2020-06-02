@@ -1,0 +1,9 @@
+[Unit]
+Description=Yeelight x Redshift
+
+[Timer]
+OnUnitActiveSec=1200s
+OnBootSec=1200s
+
+[Install]
+WantedBy=multi-user.target 
