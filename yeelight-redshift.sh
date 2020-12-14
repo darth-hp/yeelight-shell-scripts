@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 redshift -p &> redshift_out
 string=$(cat redshift_out | grep Color)

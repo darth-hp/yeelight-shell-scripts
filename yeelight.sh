@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # Put all your Yeelights separated by spaces in yeelight-ips
 declare -a ID=($(cat $(dirname $0)/yeelight-ips))
 

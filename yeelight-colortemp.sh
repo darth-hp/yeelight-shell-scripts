@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 IDMSG="ID must be a number"
 CTMSG="CT must be Kelvin between 1700 and 6500"
