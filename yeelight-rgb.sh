@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 set -E
 trap '[ "$?" -ne 99 ] || exit 99' ERR

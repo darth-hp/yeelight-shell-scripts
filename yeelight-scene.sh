@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # Setup your scenes and adjust the scenes below
 SCENES="On|Off|Sunrise|Sunset|Sleep|Rainbow|Disco|2700|4300|6500|Off1Min|Stop|Dim|Warm"

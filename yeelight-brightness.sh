@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 IDMSG="ID must be a number"
 BRIMSG="BRIGHTNESS must be a number between 0 and 100"
