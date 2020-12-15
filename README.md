@@ -1,4 +1,4 @@
-# yeelight-shell-scripts
+# Yeelight Shell Scripts
 
 Control Xiaomi Mi Yeelight (RGB) with shell scripts. Should work under any recent Linux with a `bash` or `zsh` - sorry, don't know if that works under Windows/CygWin or Macos - you might need to rewrite the last line in the `yeelight.sh` script (e.g. by pipeing the output to `netcat`).
 
